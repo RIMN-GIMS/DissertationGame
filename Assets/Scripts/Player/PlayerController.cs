@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    // makes global for use in other scripts
+    public static PlayerController Instance;
 
     private float inputx;
     private float inputy;
@@ -15,6 +17,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float moveSpeed;
 
+    private void Awake()
+    {
+        // for scene transition
+        if (Instance != null && Instance != this)
+            Destroy(this);
+        else
+        {
+            Instance = this;
+        }
+    }
     // Update is called once per frame
     void Update()
     {
