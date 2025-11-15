@@ -49,6 +49,6 @@ public class PlayerController : MonoBehaviour
     }
     private void FixedUpdate() //Physics update
     {
-        rb.velocity = new Vector2(playerMoveDirection.x * moveSpeed, playerMoveDirection.y * moveSpeed);
+        rb.linearVelocity = new Vector2(playerMoveDirection.x * moveSpeed, playerMoveDirection.y * moveSpeed);
     }
 }

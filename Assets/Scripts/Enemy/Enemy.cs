@@ -35,7 +35,7 @@ public class Enemy : MonoBehaviour
         }
         // makes enemy walk toward player position
         direction = (PlayerController.Instance.transform.position - transform.position).normalized;
-        rb.velocity = new Vector2(direction.x * moveSpeed, direction.y * moveSpeed);
+        rb.linearVelocity = new Vector2(direction.x * moveSpeed, direction.y * moveSpeed);
     }
     private void OnCollisionStay2D(Collision2D collision)
     {
