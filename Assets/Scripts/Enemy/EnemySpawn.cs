@@ -6,8 +6,8 @@ public class EnemySpawn : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    [System.Serializable]    
-    
+    [System.Serializable]
+
     public class Wave
     {
         public GameObject enemyprefab;
@@ -15,7 +15,7 @@ public class EnemySpawn : MonoBehaviour
         public float spawnInterval;
         public int eniemiesPerWave;
         public int eniemiesSpawnCount;
-       
+
     }
 
     public List<Wave> waves = new List<Wave>();
@@ -24,41 +24,44 @@ public class EnemySpawn : MonoBehaviour
     public Transform maxPos;
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        //spawns enemy in intervals of real time
-        waves[waveNumber].spawnTimer += Time.deltaTime;
-        if (waves[waveNumber].spawnTimer >= waves[waveNumber].spawnInterval ) 
+        if (PlayerController.Instance.gameObject.activeSelf)
         {
-            waves[waveNumber].spawnTimer = 0;
-            spawnEnemy();
-        }
-        // if wave is complete moves on to next wave
-        if (waves[waveNumber].eniemiesSpawnCount >= waves[waveNumber].eniemiesPerWave) 
-        {
-            waves[waveNumber].eniemiesSpawnCount = 0;
-            // increases speed waves spawn at with limit at .3 seconds
-            if (waves[waveNumber].spawnInterval > 0.3f)
+            //spawns enemy in intervals of real time
+            waves[waveNumber].spawnTimer += Time.deltaTime;
+            if (waves[waveNumber].spawnTimer >= waves[waveNumber].spawnInterval)
             {
-                waves[waveNumber].spawnInterval *= 0.9f;
+                waves[waveNumber].spawnTimer = 0;
+                spawnEnemy();
             }
-            
-            waveNumber++;
+            // if wave is complete moves on to next wave
+            if (waves[waveNumber].eniemiesSpawnCount >= waves[waveNumber].eniemiesPerWave)
+            {
+                waves[waveNumber].eniemiesSpawnCount = 0;
+                // increases speed waves spawn at with limit at .3 seconds
+                if (waves[waveNumber].spawnInterval > 0.3f)
+                {
+                    waves[waveNumber].spawnInterval *= 0.9f;
+                }
+
+                waveNumber++;
+            }
+            if (waveNumber >= waves.Count)
+            {
+                waveNumber = 0;
+            }
         }
-        if (waveNumber >= waves.Count)
-        {
-            waveNumber = 0;
-        }
-        
+
     }
     void spawnEnemy()
     {
         Instantiate(waves[waveNumber].enemyprefab, RandomSpawnPoint(), transform.rotation);
-        waves[waveNumber ].eniemiesSpawnCount++;
+        waves[waveNumber].eniemiesSpawnCount++;
     }
 
     private Vector2 RandomSpawnPoint()
