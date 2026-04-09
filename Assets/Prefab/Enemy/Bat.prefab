@@ -134,6 +134,8 @@ MonoBehaviour:
   moveSpeed: 0.75
   damage: 70
   enemyHealth: 75
+  xpDrop: 15
+  pushTime: 0.1
   destroyEffect: {fileID: 1513117935461703907, guid: f286d4c44e25f734ba25dd44eb9147af, type: 3}
 --- !u!50 &5238847050217369299
 Rigidbody2D:

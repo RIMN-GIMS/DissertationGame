@@ -1,22 +1,18 @@
 using UnityEngine;
 
-public class AreaWeapon : MonoBehaviour
+public class AreaWeapon : Weapon
 {
    
     [SerializeField]
     private GameObject prefab;
     private float spawnCounter;
-    public float cooldown = 5f;
-    public float duration = 3f;
-    public float damage = 1f;
-    public float range =4f;
-    public float speed = .5f;
     void Update()
     {
+        // if timer 0 spawn weapon
         spawnCounter -= Time.deltaTime;
         if( spawnCounter <= 0)
         {
-            spawnCounter = cooldown;
+            spawnCounter = stats[weaponLevel].cooldown;
             Instantiate(prefab,transform.position,transform.rotation,transform);
         }
     }

@@ -43,10 +43,10 @@ public class EnemySpawn : MonoBehaviour
             if (waves[waveNumber].eniemiesSpawnCount >= waves[waveNumber].eniemiesPerWave)
             {
                 waves[waveNumber].eniemiesSpawnCount = 0;
-                // increases speed waves spawn at with limit at .3 seconds
-                if (waves[waveNumber].spawnInterval > 0.3f)
+                // increases speed waves spawn
+                if (waves[waveNumber].spawnInterval > 0.15f)
                 {
-                    waves[waveNumber].spawnInterval *= 0.9f;
+                    waves[waveNumber].spawnInterval *= 0.8f;
                 }
 
                 waveNumber++;

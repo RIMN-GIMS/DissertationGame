@@ -131,9 +131,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   spriteR: {fileID: 7306519784932948060}
   rb: {fileID: 1667400090054639828}
-  moveSpeed: 2.5
+  moveSpeed: 2.3
   damage: 8
   enemyHealth: 8
+  xpDrop: 1
+  pushTime: 0.3
   destroyEffect: {fileID: 1513117935461703907, guid: f286d4c44e25f734ba25dd44eb9147af, type: 3}
 --- !u!50 &1667400090054639828
 Rigidbody2D:

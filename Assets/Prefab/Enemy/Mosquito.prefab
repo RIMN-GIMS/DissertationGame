@@ -197,6 +197,8 @@ MonoBehaviour:
   moveSpeed: 2
   damage: 12
   enemyHealth: 12
+  xpDrop: 2
+  pushTime: 0.3
   destroyEffect: {fileID: 1513117935461703907, guid: f286d4c44e25f734ba25dd44eb9147af, type: 3}
 --- !u!1 &4527858455827886647
 GameObject:

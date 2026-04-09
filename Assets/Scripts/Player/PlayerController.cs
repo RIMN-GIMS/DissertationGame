@@ -1,4 +1,6 @@
 
+using NUnit.Framework;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -12,6 +14,12 @@ public class PlayerController : MonoBehaviour
     public Vector3 playerMoveDirection;
     public float playerMaxHealth;
     public float playerCurHealth;
+    public int experience;
+    public int currentLevel;
+    public int maxLevel;
+    [SerializeField]
+    public List<Weapon> activeWeapons;
+    public List<int> playerLevels;
     [Header("Adjustables")]
     [SerializeField]
     private Rigidbody2D rb;
@@ -36,8 +44,13 @@ public class PlayerController : MonoBehaviour
     }
     private void Start()
     {
+        for (int i = playerLevels.Count; i < maxLevel; i++)
+        {
+            playerLevels.Add(Mathf.CeilToInt(playerLevels[playerLevels.Count - 1] * 1.1f + 15));
+        }
         playerCurHealth = playerMaxHealth;
         UIController.Instance.UpdatePHealthUI();
+        UIController.Instance.UpdateXPUI();
     }
 
     void Update()
@@ -47,7 +60,7 @@ public class PlayerController : MonoBehaviour
         inputy = Input.GetAxisRaw("Vertical");
         playerMoveDirection = new Vector3(inputx, inputy).normalized;
         animatorP.SetFloat("MoveX", inputx);
-        animatorP.SetFloat("MoveY",inputy);
+        animatorP.SetFloat("MoveY", inputy);
         if (playerMoveDirection == Vector3.zero)
         {
             animatorP.SetBool("Idle", true);
@@ -56,8 +69,8 @@ public class PlayerController : MonoBehaviour
         {
             animatorP.SetBool("Idle", false);
         }
-        
-        if(ImmunityTimer > 0)
+
+        if (ImmunityTimer > 0)
         {
             ImmunityTimer -= Time.deltaTime;
         }
@@ -65,7 +78,7 @@ public class PlayerController : MonoBehaviour
         {
             isImmune = false;
         }
- 
+
     }
     private void FixedUpdate() //Physics update
     {
@@ -86,6 +99,38 @@ public class PlayerController : MonoBehaviour
                 gameObject.SetActive(false);
                 GameManager.Instance.GameOver();
             }
+        }
+    }
+    public void GetExperience(int amount)
+    {
+        experience += amount;
+        UIController.Instance.UpdateXPUI();
+        if (experience >= playerLevels[currentLevel])
+        {
+            LevelUp();
+        }
+    }
+    public void LevelUp()
+    {
+        // maintains XP between levels
+        experience -= playerLevels[currentLevel];
+       // increments level
+        currentLevel++;
+        // updates UI
+        UIController.Instance.UpdateXPUI();
+        UIController.Instance.LeveUpMenuO();
+        //Defines buttons on menu appearance 
+        if (activeWeapons[0].stats[0].active == true)
+        {
+            UIController.Instance.levelUpButtons[0].activatebutton(activeWeapons[0]);
+        }
+        if (activeWeapons[1].stats[1].active == true)
+        {
+            UIController.Instance.levelUpButtons[1].activatebutton(activeWeapons[1]);
+        }
+        if (activeWeapons[2].stats[2].active == true)
+        {
+            UIController.Instance.levelUpButtons[2].activatebutton(activeWeapons[2]);
         }
     }
 }
