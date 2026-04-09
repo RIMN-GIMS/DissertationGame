@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     public int experience;
     public int currentLevel;
     public int maxLevel;
+    private float xpMult =1f;
     [SerializeField]
     public List<Weapon> activeWeapons;
     public List<int> playerLevels;
@@ -44,11 +45,14 @@ public class PlayerController : MonoBehaviour
     }
     private void Start()
     {
+        
+        // increment XP per level
         for (int i = playerLevels.Count; i < maxLevel; i++)
         {
             playerLevels.Add(Mathf.CeilToInt(playerLevels[playerLevels.Count - 1] * 1.1f + 15));
         }
         playerCurHealth = playerMaxHealth;
+        //updates UI
         UIController.Instance.UpdatePHealthUI();
         UIController.Instance.UpdateXPUI();
     }
@@ -101,9 +105,15 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+
+    public void SetXPSpeed(float newSpeed)
+    {
+        xpMult = newSpeed;
+    }
     public void GetExperience(int amount)
     {
-        experience += amount;
+        // used ceil to round up
+        experience += Mathf.CeilToInt(amount * xpMult);
         UIController.Instance.UpdateXPUI();
         if (experience >= playerLevels[currentLevel])
         {

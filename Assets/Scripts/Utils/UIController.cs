@@ -11,6 +11,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private Slider xPSlide;
     [SerializeField] private TMP_Text XpText;
     public GameObject gameOverPanel;
+    public GameObject XpMultPanel;
     public GameObject PausePanel;
     public GameObject LevelPanel;
     public LevelUpBtn[] levelUpButtons;
@@ -24,6 +25,10 @@ public class UIController : MonoBehaviour
         {
             Instance = this;
         }
+    }
+    private void Start()
+    {
+        XpMultMenuO();
     }
     public void UpdatePHealthUI()
     {
@@ -54,6 +59,16 @@ public class UIController : MonoBehaviour
         LevelPanel.SetActive(false);
         Time.timeScale = 1f;
     }
+    public void XpMultMenuO()
+    {
+        XpMultPanel.SetActive(true);
+        Time.timeScale = 0f;
+    }
 
+    public void XpMultMenuC()
+    {
+        XpMultPanel.SetActive(false);
+        Time.timeScale = 1f;
+    }
 
 }
