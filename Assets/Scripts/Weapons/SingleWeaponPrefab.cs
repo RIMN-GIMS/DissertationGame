@@ -2,21 +2,16 @@ using UnityEngine;
 
 public class ProjectilePrefab : MonoBehaviour
 {
-    public float speed;
-    public float damage;
-    public float lifetime = 5f;
+
     public ProjectileWeapon weapon;
 
     private Vector3 moveDirection;
 
     void Start()
     {
-        // Pull stats from the weapon like AoE system
         weapon = GameObject.Find("Projectile").GetComponent<ProjectileWeapon>();
-        speed = weapon.stats[weapon.weaponLevel].speed;
-        damage = weapon.stats[weapon.weaponLevel].damage;
 
-        // Destroy after lifetime/range
+       // detroys self after range
         Destroy(gameObject, weapon.stats[weapon.weaponLevel].range);
 
         // Find the nearest enemy to the projectile
@@ -26,29 +21,28 @@ public class ProjectilePrefab : MonoBehaviour
         {
             // Calculate the direction towards the nearest enemy
             moveDirection = (nearestEnemy.transform.position - transform.position).normalized;
-
-            // Rotate the projectile to face the enemy (on spawn)
+     
             RotateProjectile(moveDirection);
         }
         else
         {
-            // Fallback: If no enemy found, move forward along the initial direction
-            moveDirection = transform.right; // Projectile will move along its local right direction
+           // if no enemy just sends it right
+            moveDirection = transform.right; 
         }
-    }
+    }  
 
     void Update()
     {
-        
-        transform.Translate(moveDirection * speed * Time.deltaTime, Space.World); 
+        // moves weapon in direction at appropriate speed 
+        transform.Translate(moveDirection * weapon.stats[weapon.weaponLevel].speed * Time.deltaTime, Space.World); 
     }
 
     private GameObject FindNearestEnemy()
     {
-        // Detects game objects with the "Enemy" tag in 
+        // Detects game objects with the "Enemy" tag
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         GameObject nearestEnemy = null;
-        float minDistance = Mathf.Infinity;
+        float minDistance = 10f;
 
         // Loops through each enemy in list to find closest
         foreach (GameObject enemy in enemies)
@@ -81,8 +75,8 @@ public class ProjectilePrefab : MonoBehaviour
             Enemy enemy = collision.GetComponent<Enemy>();
             if (enemy != null)
             {
-                // Deal damage to the enemy
-                enemy.TakeDamage(damage);
+               
+                enemy.TakeDamage(weapon.stats[weapon.weaponLevel].damage);
 
             
             }

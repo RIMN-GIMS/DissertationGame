@@ -8842,6 +8842,26 @@ MonoBehaviour:
     spawnInterval: 2
     eniemiesPerWave: 1
     eniemiesSpawnCount: 0
+  - enemyprefab: {fileID: 3552331830172557834, guid: 7bcbd6bf4892e5c4cbd88acd5011cfb4, type: 3}
+    spawnTimer: 0
+    spawnInterval: 0.5
+    eniemiesPerWave: 10
+    eniemiesSpawnCount: 0
+  - enemyprefab: {fileID: 3552331830172557834, guid: 8947ab6828730e24a81635562c642128, type: 3}
+    spawnTimer: 0
+    spawnInterval: 0.7
+    eniemiesPerWave: 10
+    eniemiesSpawnCount: 0
+  - enemyprefab: {fileID: 3394188112586402513, guid: 82129f84e6c56bb46b1c1372fad55474, type: 3}
+    spawnTimer: 0
+    spawnInterval: 0.8
+    eniemiesPerWave: 12
+    eniemiesSpawnCount: 0
+  - enemyprefab: {fileID: 1273163278471985488, guid: 7cc086768b63cc340b45727fab81c108, type: 3}
+    spawnTimer: 0
+    spawnInterval: 1
+    eniemiesPerWave: 2
+    eniemiesSpawnCount: 0
   waveNumber: 0
   minPos: {fileID: 1309993376}
   maxPos: {fileID: 638938345}
@@ -10197,46 +10217,74 @@ MonoBehaviour:
   stats:
   - active: 1
     cooldown: 6
-    duration: 4
-    damage: 4
-    range: 1.5
-    speed: 0.7
-    desc: Duration increase
+    duration: 3
+    damage: 1
+    range: 1
+    speed: 0.6
+    desc: Initial
   - active: 1
     cooldown: 6
-    duration: 5
-    damage: 4
-    range: 1.5
-    speed: 0.7
+    duration: 3
+    damage: 1
+    range: 1
+    speed: 0.6
     desc: Range increase
   - active: 1
     cooldown: 6
-    duration: 5
-    damage: 4
-    range: 2
-    speed: 0.7
-    desc: Damage Increase
-  - active: 0
-    cooldown: 6
-    duration: 5
-    damage: 5
-    range: 2
-    speed: 0.7
-    desc: Faster Damage
-  - active: 1
-    cooldown: 6
-    duration: 5
-    damage: 5
-    range: 2
+    duration: 3
+    damage: 1
+    range: 1.3
     speed: 0.6
-    desc: Damage Increase
+    desc: Cooldown Decrease
   - active: 1
-    cooldown: 6
-    duration: 5
-    damage: 6
-    range: 2
-    speed: 0.7
-    desc: Max
+    cooldown: 5
+    duration: 3
+    damage: 1
+    range: 1.3
+    speed: 0.6
+    desc: Damage Speed Increase
+  - active: 1
+    cooldown: 5
+    duration: 3
+    damage: 1
+    range: 1.3
+    speed: 0.5
+    desc: Range Increase
+  - active: 1
+    cooldown: 5
+    duration: 3
+    damage: 1
+    range: 1.5
+    speed: 0.5
+    desc: Damage Speed Increase
+  - active: 1
+    cooldown: 5
+    duration: 3
+    damage: 1
+    range: 1.5
+    speed: 0.4
+    desc: Cooldown Decrease
+  - active: 1
+    cooldown: 4
+    duration: 3
+    damage: 1
+    range: 1.5
+    speed: 0.4
+    desc: Range Increase
+  - active: 1
+    cooldown: 4
+    duration: 3
+    damage: 1
+    range: 1.6
+    speed: 0.4
+    desc: Damage increase
+  - active: 1
+    cooldown: 4
+    duration: 3
+    damage: 3
+    range: 1.6
+    speed: 0.4
+    desc: Max - Dont Click
   weaponIcon: {fileID: -415342042134296365, guid: a3d4eea070f6d384d8e788516a2e566d, type: 3}
   prefab: {fileID: 3700674913490851495, guid: c27564ad6fc052249bbbba4e755a333c, type: 3}
 --- !u!1 &875714228
@@ -11903,7 +11951,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 875714229}
   m_HandleRect: {fileID: 0}
@@ -12459,7 +12507,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 264995307}
   m_HandleRect: {fileID: 0}
@@ -13274,47 +13322,75 @@ MonoBehaviour:
   weaponLevel: 0
   stats:
   - active: 1
-    cooldown: 5
+    cooldown: 4
     duration: 1
     damage: 15
     range: 3
-    speed: 5
+    speed: 3
+    desc: Initial
+  - active: 1
+    cooldown: 3
+    duration: 1
+    damage: 15
+    range: 3
+    speed: 3
     desc: Cooldown Decrease
   - active: 1
-    cooldown: 4
+    cooldown: 2.5
     duration: 1
     damage: 15
     range: 3
-    speed: 5
-    desc: Speed Increase
-  - active: 1
-    cooldown: 4
-    duration: 1
-    damage: 15
-    range: 3
-    speed: 6
+    speed: 3
     desc: Damage increase
   - active: 1
-    cooldown: 4
+    cooldown: 2.5
     duration: 1
     damage: 18
     range: 3
     speed: 3
     desc: Range increase
   - active: 1
-    cooldown: 4
+    cooldown: 2.5
     duration: 1
-    damage: 15
+    damage: 18
     range: 5
     speed: 3
     desc: Cooldown Decrease
   - active: 1
-    cooldown: 3
+    cooldown: 1.5
     duration: 1
-    damage: 15
+    damage: 18
     range: 5
-    speed: 2
-    desc: Damage increase
+    speed: 3
+    desc: Speed Increase
+  - active: 1
+    cooldown: 1.5
+    duration: 1
+    damage: 18
+    range: 5
+    speed: 6
+    desc: Damage Increase
+  - active: 1
+    cooldown: 1.5
+    duration: 1
+    damage: 20
+    range: 5
+    speed: 6
+    desc: Cooldown Decrease
+  - active: 1
+    cooldown: 1
+    duration: 1
+    damage: 20
+    range: 5
+    speed: 6
+    desc: Damage Increase
+  - active: 1
+    cooldown: 1
+    duration: 1
+    damage: 30
+    range: 5
+    speed: 6
+    desc: Max - Dont Click
   weaponIcon: {fileID: -2052979034590239150, guid: f24d107a5e2cc2642b7b283ee6436408, type: 3}
   projectilePrefab: {fileID: 1696307299433156924, guid: 85d95ab883f61554faac90265ed0364c, type: 3}
 --- !u!1 &1447343853
@@ -31387,30 +31463,65 @@ MonoBehaviour:
     cooldown: 5
     duration: 3
     damage: 9
-    range: 5.5
+    range: 4.5
     speed: 0.5
     desc: Damage Speed Increase
   - active: 1
     cooldown: 5
     duration: 3
     damage: 9
-    range: 5.5
+    range: 4.5
     speed: 0.3
     desc: Duration Increase
   - active: 1
     cooldown: 5
     duration: 4
     damage: 9
-    range: 5.5
-    speed: 0.5
+    range: 4.5
+    speed: 0.3
     desc: Damage Increase
   - active: 1
     cooldown: 5
     duration: 4
     damage: 13
+    range: 4.5
+    speed: 0.3
+    desc: Range Increase
+  - active: 1
+    cooldown: 5
+    duration: 4
+    damage: 13
+    range: 5
+    speed: 0.3
+    desc: Cooldown Decrease
+  - active: 1
+    cooldown: 4
+    duration: 4
+    damage: 13
+    range: 5
+    speed: 0.3
+    desc: Damage Increase
+  - active: 1
+    cooldown: 4
+    duration: 4
+    damage: 15
+    range: 5
+    speed: 0.3
+    desc: Duration Increase
+  - active: 1
+    cooldown: 4
+    duration: 5
+    damage: 15
+    range: 5
+    speed: 0.3
+    desc: Range Increase
+  - active: 1
+    cooldown: 4
+    duration: 5
+    damage: 13
     range: 5.5
-    speed: 0.5
-    desc: Max
+    speed: 0.3
+    desc: Max - Dont Click
   weaponIcon: {fileID: -6217084846943673651, guid: cb630e09fad91844788832610bf4da6f, type: 3}
   prefab: {fileID: 156088953990823832, guid: 9d8614ee405ec1b45a5891f3544c38ba, type: 3}
 --- !u!1 &1476630539
